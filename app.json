@@ -1,0 +1,6 @@
+{
+  "name": "BBDC Booking Bot",
+  "description": "Bot that periodically checks BBDC website for a pre-defined slot and alerts you through Telegram when it becomes available.",
+  "repository": "https://github.com/tangsxx/BBDC_Bot",
+  "keywords": ["booking"]
+}

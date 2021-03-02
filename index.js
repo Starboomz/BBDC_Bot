@@ -42,7 +42,7 @@ scheduleJob = () => {
     if (process.env.AUTO_BOOK || false){
       console.log("Auto book is enabled. Attempting to book")
       autoBook(slots);
-    }
+    };
     // Adds to history
     slotHistory = {
       ... slots,

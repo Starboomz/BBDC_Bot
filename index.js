@@ -20,7 +20,6 @@ const app = express()
 const PORT = process.env.PORT || 3000;
 
 main = async () => {
-  console.log("bot turning on")
   telegram.sendMessage(
     process.env.TELEGRAM_CHAT_ID,
     `BBDC Bot started with the following config\n<code>Months: ${process.env.PREF_MONTH}\nDay: ${process.env.PREF_DAY}\nSession: ${process.env.PREF_SESSION}\nAuto Book: ${process.env.AUTO_BOOK}</code>`, {
@@ -36,13 +35,15 @@ scheduleJob = () => {
     ping(); // For heroku
     telegram.sendMessage(
     process.env.TELEGRAM_CHAT_ID,
-    `scheduling2`, {
+    `scheduling`, {
       parse_mode: "HTML"
     }
     );
     const [cookie] = await getCookie();
+    console.log("cookie get")
     [loginSession] = cookie.split(";");
     await login();
+    console.log("logged in")
     const slots = await getSlots(populatePreference());
     sendPrettifiedSlotsMessage(slots);
     // Check for auto book
@@ -69,6 +70,7 @@ getCookie = async () => {
     const response = await axios.get(BBDC_URL);
     return response.headers["set-cookie"];
   } catch (error) {
+    console.log("failed to get cookies rip");
     console.error(error);
   }
 };

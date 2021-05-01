@@ -47,6 +47,12 @@ scheduleJob = () => {
     sendPrettifiedSlotsMessage(slots);
     // Check for auto book
     if (process.env.AUTO_BOOK || false){
+      telegram.sendMessage(
+        process.env.TELEGRAM_CHAT_ID,
+        `autobooking`, {
+          parse_mode: "HTML"
+        }
+      );
       console.log("Auto book is enabled. Attempting to book")
       autoBook(slots);
     };

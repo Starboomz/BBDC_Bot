@@ -39,10 +39,6 @@ scheduleJob = () => {
       parse_mode: "HTML"
     }
     );
-    console.log("getting cookies");
-    const [cookie] = await getCookie();
-    console.log("cookie get")
-    [loginSession] = cookie.split(";");
     await login();
     console.log("logged in")
     const slots = await getSlots(populatePreference());
@@ -89,7 +85,6 @@ login = async () => {
     const config = {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        Cookie: loginSession,
       },
     };
     await axios.post(BBDC_LOGIN_URL, qs.stringify(data), config);
@@ -105,7 +100,6 @@ getSlots = async (preference) => {
     const config = {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        Cookie: loginSession,
       },
     };
     const response = await axios.post(
@@ -129,7 +123,6 @@ createBooking = async (slotID) => {
     const config = {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        Cookie: loginSession,
       },
     };
     const response = await axios.post(

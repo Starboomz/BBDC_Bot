@@ -28,7 +28,7 @@ main = async () => {
   );
   telegram.sendMessage(
     process.env.TELEGRAM_CHAT_ID,
-    `Hi`, {
+    `Hi</code>`, {
       parse_mode: "HTML"
     }
   );

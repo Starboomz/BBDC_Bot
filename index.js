@@ -31,7 +31,7 @@ main = async () => {
 
 scheduleJob = () => {
   // Check for auto book
-  cron.schedule('*/10 * * * *', async () => {
+  cron.schedule('*/1 * * * *', async () => {
     ping(); // For heroku
     const [cookie] = await getCookie();
     [loginSession] = cookie.split(";");

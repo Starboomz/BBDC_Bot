@@ -36,7 +36,7 @@ scheduleJob = () => {
     ping(); // For heroku
     telegram.sendMessage(
     process.env.TELEGRAM_CHAT_ID,
-    `scheduling`, {
+    `scheduling2`, {
       parse_mode: "HTML"
     }
     );

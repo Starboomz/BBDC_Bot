@@ -26,6 +26,12 @@ main = async () => {
       parse_mode: "HTML"
     }
   );
+  telegram.sendMessage(
+    process.env.TELEGRAM_CHAT_ID,
+    `Hi`, {
+      parse_mode: "HTML"
+    }
+  );
   scheduleJob();
 };
 

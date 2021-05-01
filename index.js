@@ -20,15 +20,10 @@ const app = express()
 const PORT = process.env.PORT || 3000;
 
 main = async () => {
+  console.log("bot turning on")
   telegram.sendMessage(
     process.env.TELEGRAM_CHAT_ID,
     `BBDC Bot started with the following config\n<code>Months: ${process.env.PREF_MONTH}\nDay: ${process.env.PREF_DAY}\nSession: ${process.env.PREF_SESSION}\nAuto Book: ${process.env.AUTO_BOOK}</code>`, {
-      parse_mode: "HTML"
-    }
-  );
-  telegram.sendMessage(
-    process.env.TELEGRAM_CHAT_ID,
-    `Hi</code>`, {
       parse_mode: "HTML"
     }
   );

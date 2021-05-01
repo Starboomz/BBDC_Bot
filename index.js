@@ -20,14 +20,12 @@ const app = express()
 const PORT = process.env.PORT || 3000;
 
 main = async () => {
-  console.log("bot running")
   telegram.sendMessage(
     process.env.TELEGRAM_CHAT_ID,
     `BBDC Bot started with the following config\n<code>Months: ${process.env.PREF_MONTH}\nDay: ${process.env.PREF_DAY}\nSession: ${process.env.PREF_SESSION}\nAuto Book: ${process.env.AUTO_BOOK}</code>`, {
       parse_mode: "HTML"
     }
   );
-  console.log("job start")
   scheduleJob();
 };
 
@@ -35,6 +33,12 @@ scheduleJob = () => {
   // Check for auto book
   cron.schedule('*/1 * * * *', async () => {
     ping(); // For heroku
+    telegram.sendMessage(
+    process.env.TELEGRAM_CHAT_ID,
+    `scheduling`, {
+      parse_mode: "HTML"
+    }
+    );
     const [cookie] = await getCookie();
     [loginSession] = cookie.split(";");
     await login();

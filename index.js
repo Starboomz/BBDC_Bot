@@ -39,6 +39,7 @@ scheduleJob = () => {
       parse_mode: "HTML"
     }
     );
+    console.log("getting cookies");
     const [cookie] = await getCookie();
     console.log("cookie get")
     [loginSession] = cookie.split(";");
@@ -67,7 +68,9 @@ scheduleJob = () => {
 
 getCookie = async () => {
   try {
+    console.log("cookies got 0");
     const response = await axios.get(BBDC_URL);
+    console.log("cookies got 1");
     return response.headers["set-cookie"];
   } catch (error) {
     console.log("failed to get cookies rip");
